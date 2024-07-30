@@ -25,7 +25,7 @@ struct ForeCashApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            TransactionsScreen()
         }
         .modelContainer(sharedModelContainer)
     }

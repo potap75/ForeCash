@@ -8,13 +8,15 @@
 
 /* Begin PBXBuildFile section */
 		669618952C586B6000A60AC2 /* ForeCashApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669618942C586B6000A60AC2 /* ForeCashApp.swift */; };
-		669618972C586B6000A60AC2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669618962C586B6000A60AC2 /* ContentView.swift */; };
 		669618992C586B6000A60AC2 /* Transaction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669618982C586B6000A60AC2 /* Transaction.swift */; };
 		6696189B2C586B6100A60AC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6696189A2C586B6100A60AC2 /* Assets.xcassets */; };
 		6696189E2C586B6100A60AC2 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6696189D2C586B6100A60AC2 /* Preview Assets.xcassets */; };
 		669618A82C586B6100A60AC2 /* ForeCashTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669618A72C586B6100A60AC2 /* ForeCashTests.swift */; };
 		669618B22C586B6100A60AC2 /* ForeCashUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669618B12C586B6100A60AC2 /* ForeCashUITests.swift */; };
 		669618B42C586B6100A60AC2 /* ForeCashUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669618B32C586B6100A60AC2 /* ForeCashUITestsLaunchTests.swift */; };
+		669618C22C58765300A60AC2 /* TransactionsScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669618C12C58765300A60AC2 /* TransactionsScreen.swift */; };
+		669618C42C587C4000A60AC2 /* AddTransactionScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669618C32C587C4000A60AC2 /* AddTransactionScreen.swift */; };
+		669618C62C587C9600A60AC2 /* PreviewContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669618C52C587C9600A60AC2 /* PreviewContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -37,7 +39,6 @@
 /* Begin PBXFileReference section */
 		669618912C586B6000A60AC2 /* ForeCash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ForeCash.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		669618942C586B6000A60AC2 /* ForeCashApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeCashApp.swift; sourceTree = "<group>"; };
-		669618962C586B6000A60AC2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		669618982C586B6000A60AC2 /* Transaction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transaction.swift; sourceTree = "<group>"; };
 		6696189A2C586B6100A60AC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6696189D2C586B6100A60AC2 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -46,6 +47,9 @@
 		669618AD2C586B6100A60AC2 /* ForeCashUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ForeCashUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		669618B12C586B6100A60AC2 /* ForeCashUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeCashUITests.swift; sourceTree = "<group>"; };
 		669618B32C586B6100A60AC2 /* ForeCashUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForeCashUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		669618C12C58765300A60AC2 /* TransactionsScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransactionsScreen.swift; sourceTree = "<group>"; };
+		669618C32C587C4000A60AC2 /* AddTransactionScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTransactionScreen.swift; sourceTree = "<group>"; };
+		669618C52C587C9600A60AC2 /* PreviewContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,9 +100,9 @@
 		669618932C586B6000A60AC2 /* ForeCash */ = {
 			isa = PBXGroup;
 			children = (
+				669618C72C587E2300A60AC2 /* Models */,
+				669618C02C58762B00A60AC2 /* Screens */,
 				669618942C586B6000A60AC2 /* ForeCashApp.swift */,
-				669618962C586B6000A60AC2 /* ContentView.swift */,
-				669618982C586B6000A60AC2 /* Transaction.swift */,
 				6696189A2C586B6100A60AC2 /* Assets.xcassets */,
 				6696189C2C586B6100A60AC2 /* Preview Content */,
 			);
@@ -109,6 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				6696189D2C586B6100A60AC2 /* Preview Assets.xcassets */,
+				669618C52C587C9600A60AC2 /* PreviewContainer.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -128,6 +133,23 @@
 				669618B32C586B6100A60AC2 /* ForeCashUITestsLaunchTests.swift */,
 			);
 			path = ForeCashUITests;
+			sourceTree = "<group>";
+		};
+		669618C02C58762B00A60AC2 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				669618C12C58765300A60AC2 /* TransactionsScreen.swift */,
+				669618C32C587C4000A60AC2 /* AddTransactionScreen.swift */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		669618C72C587E2300A60AC2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				669618982C586B6000A60AC2 /* Transaction.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -260,9 +282,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				669618972C586B6000A60AC2 /* ContentView.swift in Sources */,
+				669618C22C58765300A60AC2 /* TransactionsScreen.swift in Sources */,
 				669618992C586B6000A60AC2 /* Transaction.swift in Sources */,
 				669618952C586B6000A60AC2 /* ForeCashApp.swift in Sources */,
+				669618C62C587C9600A60AC2 /* PreviewContainer.swift in Sources */,
+				669618C42C587C4000A60AC2 /* AddTransactionScreen.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
