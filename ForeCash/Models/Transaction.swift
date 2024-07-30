@@ -10,13 +10,13 @@ import SwiftData
 
 @Model
 class Transaction {
-    var amount: Decimal
+    var amount: Double
     var account: String
     
     
 //    var amountString: String { amount }
     
-    init(amount: Decimal, account: String) {
+    init(amount: Double, account: String) {
         self.amount = amount
         self.account = account
     }

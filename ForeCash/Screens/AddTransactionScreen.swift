@@ -8,35 +8,64 @@
 import SwiftUI
 
 struct AddTransactionScreen: View {
+    
+    @Environment(\.dismiss) private var dismiss
+    @Environment(\.modelContext) private var context
+    
+    @State private var amount: Double?
+    @State private var account: String = ""
+    
+    var transaction: Transaction? = nil
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        NavigationStack {
+            VStack {
+                TextField("Account", text: $account)
+                    .textFieldStyle(.roundedBorder)
+                    .padding([.leading, .trailing], 44)
+                
+                TextField("Amount", value: $amount, format: .number)
+                    .textFieldStyle(.roundedBorder)
+                    .padding([.leading, .trailing], 44)
+            }
+        }
+        .onAppear(perform: {
+            if let transaction {
+                account = transaction.account
+                amount = transaction.amount
+            }
+        })
+        .navigationTitle(transaction == nil ? "New Transaction": "Edit Transaction")
+        .navigationBarTitleDisplayMode(.inline)
+        
+        HStack {
+            
+            Button("Close") {
+                dismiss()
+            }
+            .frame(alignment: .trailing)
+            Spacer()
+            Button("Done") {
+                
+                if let transaction {
+                    transaction.account = account
+                    transaction.amount = amount ?? 0.00
+                } else {
+                    let transaction = Transaction(amount: amount ?? 0.00, account: account)
+                    context.insert(transaction)
+                }
+                
+                dismiss()
+            }
+            .frame(alignment: .leading)
+        }
+        .padding()
     }
 }
 
-//    private func addTransaction() {
-//        withAnimation {
-//            let newTransaction = Transaction(timestamp: Date(), amount: Double(), account: String())
-//            modelContext.insert(newTransaction)
-//        }
-//    }
-//
-//    private func deleteTransactions(offsets: IndexSet) {
-//        withAnimation {
-//            for index in offsets {
-//                modelContext.delete(transactions[index])
-//            }
-//        }
-//    }
 
-
-
-//NavigationLink {
-//    Text(trx.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
-//} label: {
-//    Text("Transaction at \(trx.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard)) for \(trx.amount)")
-//}
-//}
-
-#Preview {
-    AddTransactionScreen()
+#Preview { @MainActor in
+    NavigationStack {
+        AddTransactionScreen()
+    }.modelContainer(previewContainer)
 }
