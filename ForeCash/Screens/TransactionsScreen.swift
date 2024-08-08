@@ -25,8 +25,16 @@ struct TransactionsScreen: View {
                     .bold()
                 
                 ForEach(transactions, id: \.self) {trx in
-                        Text("\(trx.account) - $ \(trx.amount)")
-                }
+            
+                    NavigationLink {
+                        TransactionDetailScreen(transaction: trx, transactions: transactions)
+                    } label: {
+                        HStack {
+                            Text(trx.account)
+                            Text(trx.amount, format: .currency(code: "USD"))
+                        }
+                    }
+            }
                 Button(action: {
                     isPresented = true
                 }, label: {

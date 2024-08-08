@@ -28,10 +28,10 @@ var previewContainer: ModelContainer = {
 struct SampleData {
     static var transactions: [Transaction] {
         return [
-            Transaction(amount: 25.45, account: "Cash"),
-            Transaction(amount: 45.25, account: "Bank"),
-            Transaction(amount: 210.20, account: "Card"),
-            Transaction(amount: -150.15, account: "Loan"),
+            Transaction(date: Date(), descr: "Pants", vendor: "Walmart", amount: -25.45, account: "Cash", frequency: "Any", direction: "Expense", probability: "Varies", category: "Clothes"),
+            Transaction(date: Date(), descr: "Electricity", vendor: "Duke", amount: -125.25, account: "Bank 1", frequency: "Monthly", direction: "Expense", probability: "Bill", category: "Utilities"),
+            Transaction(date: Date(), descr: "Salary for July 1-15", vendor: "Work", amount: 3210.20, account: "Bank 2", frequency: "Bi-weekly", direction: "Income", probability: "Auto", category: "Salary"),
+            Transaction(date: Date(), descr: "Auto insurance July", vendor: "Allstate", amount: -82.15, account: "Bank 1", frequency: "Monthly", direction: "Expense", probability: "Auto", category: "Insurance"),
         ]
     }
 }
