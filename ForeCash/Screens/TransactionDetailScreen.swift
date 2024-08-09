@@ -19,7 +19,7 @@ struct TransactionDetailScreen: View {
             Text(transaction.descr)
             Text(transaction.vendor ?? "Unknown")
             Text(transaction.amount, format: .number)
-            Text(transaction.account)
+            Text(transaction.account ?? "Cash")
             Text(transaction.frequency ?? "Any")
             Text(transaction.direction ?? "Expense")
             Text(transaction.probability ?? "Varies")

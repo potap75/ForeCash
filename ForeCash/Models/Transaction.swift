@@ -14,7 +14,7 @@ class Transaction {
     var descr: String
     var vendor: String?
     var amount: Double
-    var account: String
+    var account: String?
     var frequency: String?
     var direction: String?
     var probability: String?
@@ -23,7 +23,7 @@ class Transaction {
     
 //    var amountString: String { amount }
     
-    init(date: Date, descr: String, vendor: String? = "Unknown", amount: Double, account: String, frequency: String? = "Any", direction: String? = "Expense", probability: String? = "Varies", category: String? = "Miscellaneous") {
+    init(date: Date, descr: String, vendor: String? = "Unknown", amount: Double, account: String? = "Cash", frequency: String? = "Any", direction: String? = "Expense", probability: String? = "Varies", category: String? = "Miscellaneous") {
         self.date = date
         self.descr = descr
         self.vendor = vendor

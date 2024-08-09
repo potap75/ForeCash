@@ -68,7 +68,7 @@ struct AddTransactionScreen: View {
                 descr = transaction.descr
                 vendor = transaction.vendor ?? "Unknown"
                 amount = transaction.amount
-                account = transaction.account
+                account = transaction.account ?? "Cash"
                 frequency = transaction.frequency ?? "Any"
                 direction = transaction.direction ?? "Expense"
                 probability = transaction.probability ?? "Varies"

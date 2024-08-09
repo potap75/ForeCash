@@ -12,51 +12,92 @@ import SwiftData
 struct TransactionsScreen: View {
     let currencyStyle = Decimal.FormatStyle.Currency(code: "USD")
         
-        @Query private var transactions: [Transaction]
+    @Query private var transactions: [Transaction]
+    
+//    private var transaction: Transaction
+    
+    @State private var date: Date = .now
+    @State private var descr: String = ""
+    @State private var vendor: String = ""
+    @State private var amount: Double = 0.00
+    @State private var account: String = ""
+    @State private var frequency: String = ""
+    @State private var direction: String = ""
+    @State private var probability: String = ""
+    @State private var category: String = ""
+    
+    
+    
+        @State private var isNewTransactionAlertPresented: Bool = false
+        @State private var selectedTransaction: Transaction?
+        @State private var showTransactionEditScreen: Bool = false
         
         @State private var isPresented: Bool = false
         
-       
+    private var isFormValid: Bool {
+        !descr.isEmptyOrWhiteSpace
+    }
+    
+//    private func saveTransaction() {
+//        var trx = Transaction(date: date, descr: descr, vendor: vendor, amount: amount, account: account, frequency: frequency, direction: direction, probability: probability, category: category)
+//        transactions.append(trx)
+//    }
+    
+    private func isTransactionSelected(_ transaction: Transaction) -> Bool {
+        transaction.persistentModelID == selectedTransaction?.persistentModelID
+    }
         
         var body: some View {
-            List {
-                Text("Transactions")
-                    .font(.largeTitle)
-                    .bold()
-                
-                ForEach(transactions, id: \.self) {trx in
-            
-                    NavigationLink {
-                        TransactionDetailScreen(transaction: trx, transactions: transactions)
-                    } label: {
-                        HStack {
-                            Text(trx.account)
-                            Text(trx.amount, format: .currency(code: "USD"))
+            VStack {
+                List(transactions) { transaction in
+                    
+                    TransactionLineView(transaction: transaction, isSelected: isTransactionSelected(transaction)) { event in
+                        switch event {
+                        case .onSelect(let transaction):
+                            selectedTransaction = transaction
+                        case .onInfoSelected(let transaction):
+                            showTransactionEditScreen = true
+                            selectedTransaction = transaction
                         }
                     }
-            }
-                Button(action: {
-                    isPresented = true
-                }, label: {
-                    Text("Add Transaction")
-                        .foregroundStyle(.blue)
-                        .frame(maxWidth: .infinity, alignment: .trailing)
-                }).listRowSeparator(.hidden)
+                }
                 
                 
+                    .navigationTitle("Transactions")
+                    .sheet(isPresented: $showTransactionEditScreen, content: {
+                        if let selectedTransaction {
+                            NavigationStack {
+                                TransactionEditScreen(transaction: selectedTransaction)
+                            }
+                        }
+                    })
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 
-            }.listStyle(.plain)
-                .sheet(isPresented: $isPresented, content: {
-                    NavigationStack {
+                Spacer()
+                
+                NavigationLink("New Transaction") {
                         AddTransactionScreen()
                     }
-                })
+                
+                }
+           
+            }
         }
-    }
+    
 
-    #Preview { @MainActor in
-        NavigationStack {
-            TransactionsScreen()
-        }.modelContainer(previewContainer)
+struct TransactionsScreenContainer: View {
+    
+    @Query private var transactions: [Transaction]
+    
+    var body: some View {
+        TransactionsScreen()
     }
+}
+
+#Preview { @MainActor in
+    NavigationStack {
+        TransactionsScreenContainer()
+            .modelContainer(previewContainer)
+    }
+}
 
